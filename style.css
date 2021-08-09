@@ -1,68 +1,68 @@
 body {
-  background-image: url("img/Backgroundblack.jpg");
+  background-image: url("img/Backgroundblack.jpeg");
 }
 header {
   background-color: rgba(81, 146, 146, 0.801);
   color: black;
   text-align: center;
-  font-family:Sans-Serif;
+  font-family: Sans-Serif;
   font-size: 30px;
   padding: 10px;
   margin: 30px;
   text-shadow: 1px 1px 1px ivory;
   border-radius: 8px;
   border: 1px solid aqua;
+  overflow: visible;
 }
 nav {
   background-color: rgba(81, 146, 146, 0.801);
   color: black;
-  padding: 0;
   margin: 30px;
   border-radius: 8px;
   border: 1px solid aqua;
+  position: relative;
+  height: 100px;
 }
-nav ul {
+#smash-news {
+  top: 10%;
+  left: 25px;
+  width: 200px;
+}
+#contact {
+  top: 10%;
+  left: 300px;
+}
+nav li {
+  text-shadow: 1px 1px 1px ivory;
+  padding: 25px 0px 25px 10px;
+  font-size: 28px;
+  width: 190px;
+}
+nav a {
+  color: black;
+  text-decoration: none;
+}
+.nav {
+  position: absolute;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-nav ul li {
-  display: inline-block;
-  text-shadow: 1px 1px 1px ivory;
-  margin: 30px;
-  font-size: 28px;
-}
-nav a{
-  color: black;
-  text-shadow: 1px 1px 1px ivory;
-  font-size: 28px ;
-}
-
-.menu-bar ul li a{
-  text-decoration: none;
-}
-.menu-bar ul li a:hover {
-  background: ivory;
+.nav:hover {
+  background: rgba(255, 255, 240, 0.795);
   border-radius: 3px;
-  position: relative;
 }
-.sub-menu-1{
+.sub-menu {
   display: none;
 }
-
-.menu-bar ul li a:hover + .sub-menu-1{
+.nav:hover .sub-menu{
   display: block;
-  position: absolute;
-  bottom: 0;
-  background: ivory;
-  margin-top: 15px;
-  margin-left: -15px;
+  top: 0;
+  left: 0;
 }
-.menu-bar ul li a:hover .sub-menu-1 ul{
-  display: block;
-  margin: 10px;
+nav li:hover {
+  box-shadow: 0 0 5px black;
 }
-
 
 article {
   background-color: rgba(81, 146, 146, 0.801);
@@ -75,8 +75,8 @@ article {
   border: 1px solid aqua;
 }
 p {
-    font-size: 24px;
-    font-family: Sans-Serif;
+  font-size: 24px;
+  font-family: Sans-Serif;
 }
 a.button {
   -webkit-appearance: button;
