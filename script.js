@@ -24,7 +24,8 @@ window.addEventListener('mousemove', (e) => {
     // turn cursor image back on
     cursor.style.display = 'block'
   }
-  infoBox.innerText = e.target.tagName;
+  // display button title on hover
+  infoBox.innerText = e.target.title;
 });
 
 
