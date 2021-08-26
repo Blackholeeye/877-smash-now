@@ -19,12 +19,9 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
-  z-index: -2;
+  z-index: -3;
 }
-header,
-nav,
-article,
-footer {
+article {
   /* filter: drop-shadow(0 0 5px rgba(81, 146, 146, 0.801)); */
   /* box-shadow: 0 0 10px 5px rgba(81, 146, 146, 0.801), inset 0 0 10px aqua; */
   animation: glow 1s ease-in-out infinite alternate;
@@ -37,26 +34,30 @@ footer {
     box-shadow: 0 0 10px 5px rgba(81, 146, 146, 0.801), inset 0 0 10px aqua;
   }
 }
-header,
 main {
-  width: 55%;
+  width: 60%;
+  height: 100%;
+  position: relative;
+}
+a {
+  cursor: none;
 }
 /* controller--------------------------------- */
 .ctrlr {
   position: fixed;
   height: 100vh;
-  width: 300px;
+  width: 20%;
   top: 0;
-  box-shadow: inset 0 0 10px black;
 }
 #leftCtrlr {
   left: 0;
-  border-radius: 200px 10px 10px 200px;
+  border-radius: 150px 10px 10px 150px;
   background-color: #FF5F53;
+  box-shadow: inset 0 -10px 10px black, inset 20px 15px 5px 0px #FF5F53, inset 5px 20px 10px 0px antiquewhite;
 }
 #rightCtrlr {
   right: 0;
-  border-radius: 10px 200px 200px 10px;
+  border-radius: 10px 150px 150px 10px;
   background-color: #00C4E3;
 }
 .button {
@@ -75,6 +76,11 @@ main {
   left: 50%;
   transform: translateX(-50%);
 }
+/* .dpad img {
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+} */
 #leftCtrlr .dpad {
   top: 350px;
 }
@@ -82,6 +88,7 @@ main {
   top: 150px;
 }
 .dpad .button {
+  position: absolute;
   border-radius: 50%;
   height: 70px;
   width: 70px;
@@ -100,13 +107,32 @@ main {
 .dpad .button:active {
   animation: none;
 }
-.dpad .button:hover {
-  animation: none;
-  animation: press 0.2s;
-  /* background-color: antiquewhite; */
+.dpad .button::after:hover {
+  /* animation: none;
+  animation: press 0.2s; */
+  background-color: antiquewhite;
   /* width: 200px;
   border-radius: 60px;
   transition: all 0.2s linear; */
+}
+#leftCtrlr .dpad .button::after {
+  content: '';
+  position: absolute;
+  height: 40%;
+  width: 40%;
+  background-color: black;
+  top: 30%;
+  left: 30%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+#leftCtrlr .right::after {
+  transform: rotate(90deg);
+}
+#leftCtrlr .down::after {
+  transform: rotate(180deg);
+}
+#leftCtrlr .left::after {
+  transform: rotate(270deg);
 }
 .up {
   top: 0;
@@ -127,6 +153,27 @@ main {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+}
+#rightCtrlr .up {
+  background-image: url("img/facebook.png");
+  background-position: center;
+  background-size: contain;
+}
+#rightCtrlr .right {
+  background-image: url("img/instagram.png");
+  background-position: center;
+  background-size: contain;
+}
+#rightCtrlr .down {
+  background-image: url("img/discord.png");
+  background-position: center;
+  background-size: contain;
+}
+#rightCtrlr .left {
+  background-image: url("img/email.png");
+  background-position: center;
+  background-size: 75%;
+  background-repeat: no-repeat;
 }
 /* Joystick ------------------------------- */
 .joystick {
@@ -161,95 +208,38 @@ main {
 #leftCtrlr .bottom {
   right: 50px;
 }
+/* bumpers ---------------------------- */
+.bumper {
+  height: 130px;
+  width: 250px;
+  top: 15%;
+  z-index: 0;
+}
+#leftCtrlr .bumper {
+  border-radius: 200px 8px 0px 8px;
+  left: 5%;
+}
+#rightCtrlr .bumper {
+  border-radius: 8px 200px 8px 0px;
+}
+/* center boxes ----------------------- */
 #textbox {
-
+  height: 15vh;
+}
+#buttonbox {
+  position: absolute;
+  font-size: 2em;
+  padding: 20px;
+  display: none;
 }
 #infobox {
   font-size: 2em;
-  height: 100px;
-}
-header {
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  width: 96%;
-  mix-blend-mode: screen;
-  -webkit-text-stroke: 1px aqua;
-  z-index: 2; */
-  text-shadow: 1px 1px 1px ivory;
-  background-color: rgba(81, 146, 146, 0.801);
-  color: black;
-  text-align: center;
-  font-family: Sans-Serif;
-  font-size: 30px;
-  padding: 10px;
-  margin: 30px;
-  border-radius: 8px;
-  border: 1px solid aqua;
-}
-nav {
-  background-color: rgba(81, 146, 146, 0.801);
-  color: black;
-  margin: 30px;
-  border-radius: 8px;
-  border: 1px solid aqua;
-  position: relative;
-  height: 100px;
-}
-#smash-news {
-  top: 10%;
-  left: 25px;
-}
-#contact {
-  top: 10%;
-  left: 300px;
-}
-nav li {
-  text-shadow: 1px 1px 1px ivory;
-  padding: 25px;
-  font-size: 28px;
-  width: 100%;
-}
-nav a {
-  color: black;
-  text-decoration: none;
-}
-.nav {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.nav:hover {
-  /* background: rgba(255, 255, 240, 0.795); */
-  background-color: rgba(81, 146, 146, 0.801);
-  border: 1px solid aqua;
-  border-radius: 8px;
-  transition: all 0.2s ease-in-out;
-}
-.sub-menu {
-  display: none;
-}
-.nav:hover .sub-menu{
-  display: block;
-  top: 0;
-  left: 0;
-  transition: all 0.2s ease-in-out;
-}
-nav li:hover {
-  color: black;
-  background-color: rgba(81, 146, 146, 0.801);
-  text-shadow: 0px 0px 5px aqua;
-  box-shadow: inset 0 0 5px aqua, 0 0 5px black;
-  border: 1px solid aqua;
-  border-radius: 8px;
-  transition: all 0.2s ease-in-out;
+  height: 75vh;
 }
 article {
   background-color: rgba(81, 146, 146, 0.801);
-  text-shadow: 1px 1px 1px ivory;
   padding: 30px;
-  margin: 30px;
+  margin: 2%;
   font-size: 20px;
   color: black;
   border-radius: 8px;
@@ -265,44 +255,10 @@ article:hover {
   background-color: rgba(81, 146, 146, 1);
   transition: all 0.2s ease-in-out;
 }
-a.button {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  font-size: 28px;
-  font-family: Sans-Serif;
-  text-decoration: none;
-  color: black;
-  border: 1px solid aqua;
-}
-#TournamentNews {
-  background-image: url("img/Background1.jpg");
-  height: 1000px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
 h1 {
   font-size: 3em;
   text-align: center;
 }
 h2 {
-  background-color: rgba(81, 146, 146, 0.801);
-  color: black;
-  max-width: 100%;
   text-align: center;
-  text-shadow: 1px 1px 1px ivory;
-  font-size: 32px;
-  font-family: Sans-Serif;
-  border-radius: 8px;
-  border: 1px solid aqua;
-}
-h3 {
-  background-color: rgba(81, 146, 146, 0.801);
-  color: black;
-  text-align: center;
-  text-shadow: 1px 1px 1px ivory;
-  font-size: 32px;
-  font-family: Sans-Serif;
-  border-radius: 8px;
-  border: 1px solid aqua;
 }
