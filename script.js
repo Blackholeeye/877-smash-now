@@ -93,10 +93,12 @@ window.addEventListener('mousemove', (e) => {
   }
 });
 
-// click event
-window.addEventListener('click', (e) => {
+// mouse down event
+window.addEventListener('mousedown', (e) => {
+  console.log('mouse down!');
   switch(e.target.className) {
     case 'button up':
+      e.target.className += ' isPressed';
       infoBox.innerHTML = smashNews;
       break;
     case 'button right':
@@ -111,4 +113,11 @@ window.addEventListener('click', (e) => {
     default:
       infoBox.innerHTML = welcomeMsg;
   }
+});
+
+// mouse up event
+window.addEventListener('mouseup', (e) => {
+  console.log('mouse up!');
+  e.target.className.replace(' isPressed', '');
+  console.log(e.target.className);
 });
