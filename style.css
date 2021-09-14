@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 #background {
   position: fixed;
@@ -38,6 +39,7 @@ main {
   width: 60%;
   height: 100%;
   position: relative;
+  overflow: scroll;
 }
 a {
   cursor: none;
@@ -95,7 +97,8 @@ a {
   width: 70px;
   border: 2px solid black;
   box-shadow: inset 0 3px 5px antiquewhite, 0 3px 5px black;
-  animation: press 0.2s;
+  transition: box-shadow 0.2s;
+  /* animation: press 0.2s; */
 }
 @keyframes press {
   0% {
@@ -105,9 +108,14 @@ a {
     box-shadow: inset 0 3px 5px black;
   }
 }
-.dpad .button:active {
-  animation: none;
+.isPressed {
+  animation: press 0.2s;
+  box-shadow: inset 0 3px 5px black;
+  transition: all 0.2s;
 }
+/* .dpad .button:active {
+  animation: none;
+} */
 .dpad .button::after:hover {
   /* animation: none;
   animation: press 0.2s; */
@@ -181,7 +189,8 @@ a {
   height: 120px;
   width: 120px;
   border-radius: 50%;
-  left: 90px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #leftCtrlr .joystick {
   top: 150px;
@@ -192,19 +201,15 @@ a {
 /* top buttons ---------------------------- */
 .top {
   top: 60px;
-}
-#leftCtrlr .top {
   right: 20px;
   height: 15px;
   width: 40px;
   border-radius: 2px;
+}
+#leftCtrlr .top {
 }
 #rightCtrlr .top {
   left: 20px;
-  right: 20px;
-  height: 15px;
-  width: 40px;
-  border-radius: 2px;
 }
 #rightCtrlr .top::before {
   content: '';
@@ -306,4 +311,77 @@ h1 {
 }
 h2 {
   text-align: center;
+}
+
+@media (max-width: 767px) {
+  main {
+    position: absolute;
+    top: 25%;
+    width: 90%;
+    height: 50vh;
+  }
+  .ctrlr {
+    height: 100vw;
+    width: 20vh;
+    top: unset;
+    transform: rotate(-90deg);
+  }
+  #leftCtrlr {
+    bottom: -17vh;
+    left: unset;
+    border-radius: 75px 10px 10px 75px;
+  }
+  #rightCtrlr {
+    top: -17vh;
+    right: unset;
+    border-radius: 10px 75px 75px 10px;
+  }
+  .dpad {
+    height: 110px;
+    width: 110px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+  }
+  #leftCtrlr .dpad {
+    top: 45%;
+  }
+  #rightCtrlr .dpad {
+    top: 15%;
+  }
+  .dpad .button {
+    height: 40px;
+    width: 40px;
+  }
+  .joystick {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+  }
+  #leftCtrlr .joystick {
+    top: 20%;
+  }
+  #rightCtrlr .joystick {
+    top: 50%;
+  }
+  .bumper {
+    height: 70px;
+    width: 100px;
+    top: -6px;
+  }
+  #leftCtrlr .bumper {
+    left: 2%;
+  }
+  #rightCtrlr .bumper {
+    right: 2%;
+  }
+  .top {
+    top: 10%;
+    height: 10px;
+    width: 20px;
+  }
+  .bottom {
+    bottom: 10%;
+    height: 30px;
+    width: 30px;
+  }
 }
