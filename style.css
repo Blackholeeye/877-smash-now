@@ -5,10 +5,8 @@
   margin: 0;
 }
 body {
-  /* background-image: url("img/Backgroundblack.jpeg"); */
-  /* padding-top: 125px; */
   background: #19283c;
-  cursor: none;
+  /* cursor: none; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,8 +25,6 @@ body {
   transform: translateX(-50%);
 }
 article {
-  /* filter: drop-shadow(0 0 5px rgba(81, 146, 146, 0.801)); */
-  /* box-shadow: 0 0 10px 5px rgba(81, 146, 146, 0.801), inset 0 0 10px aqua; */
   animation: glow 1s ease-in-out infinite alternate;
 }
 @keyframes glow {
@@ -46,7 +42,7 @@ main {
   overflow: scroll;
 }
 a {
-  cursor: none;
+  cursor: pointer;
 }
 /* controller--------------------------------- */
 .ctrlr {
@@ -89,10 +85,10 @@ a {
   margin: 5%;
 } */
 #leftCtrlr .dpad {
-  top: 350px;
+  top: 41%;
 }
 #rightCtrlr .dpad {
-  top: 150px;
+  top: 13%;
 }
 .dpad .button {
   position: absolute;
@@ -100,33 +96,22 @@ a {
   height: 70px;
   width: 70px;
   border: 2px solid black;
-  box-shadow: inset 0 3px 5px antiquewhite, 0 3px 5px black;
+  box-shadow: inset 0 -1px 4px black, inset 0 2px 3px white, 0 3px 5px black;
   transition: box-shadow 0.2s;
-  /* animation: press 0.2s; */
 }
 @keyframes press {
   0% {
-    box-shadow: inset 0 3px 5px antiquewhite;
+    box-shadow: inset 0 -1px 4px black, inset 0 2px 3px white;
   }
   100% {
     box-shadow: inset 0 3px 5px black;
   }
 }
 .isPressed {
-  animation: press 0.2s;
-  box-shadow: inset 0 3px 5px black;
-  transition: all 0.2s;
+  animation: press 0.2s forwards;
 }
-/* .dpad .button:active {
-  animation: none;
-} */
-.dpad .button::after:hover {
-  /* animation: none;
-  animation: press 0.2s; */
-  background-color: antiquewhite;
-  /* width: 200px;
-  border-radius: 60px;
-  transition: all 0.2s linear; */
+.dpad .button:hover {
+  background-color: aqua;
 }
 #leftCtrlr .dpad .button::after {
   content: '';
@@ -190,6 +175,8 @@ a {
 }
 /* Joystick ------------------------------- */
 .joystick {
+  position: absolute;
+  border: 1px solid black;
   height: 120px;
   width: 120px;
   left: 50%;
@@ -209,7 +196,7 @@ a {
 }
 .joystick::before,
 .joystick::after{
-  content: "";
+  content: '';
   position: absolute;
   width: 75%;
   height: 75%;
@@ -232,45 +219,50 @@ a {
 }
 
 #leftCtrlr .joystick {
-  top: 150px;
+  top: 18%;
 }
 #rightCtrlr .joystick {
-  top: 425px;
+  top: 50%;
 }
 /* top buttons ---------------------------- */
 .top {
   top: 60px;
-  right: 20px;
   height: 15px;
   width: 40px;
   border-radius: 2px;
+  box-shadow: inset 0 -1px 2px black, inset 0 1px 2px white, 0 1px 3px black;
 }
 #leftCtrlr .top {
+  right: 20px;
 }
 #rightCtrlr .top {
   left: 20px;
 }
-#rightCtrlr .top::before {
-  content: '';
-  position: absolute;
-  height: 15px;
-  width: 40px;
-  border-radius: 2px;
-  transform: rotate(90deg);
-  border: 1px solid black;
-  background-color: #38393D;
-}
+#rightCtrlr .top::before,
 #rightCtrlr .top::after {
   content: '';
   position: absolute;
-  height: 13px;
-  width: 38px;
-  border-radius: 2px;
   background-color: #38393D;
+}
+#rightCtrlr .top::before {
+  height: 13px;
+  width: 16px;
+  z-index: 1;
+  left: 12px;
+}
+#rightCtrlr .top::after {
+  height: 15px;
+  width: 40px;
+  transform: rotate(90deg);
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: inset -1px 0 2px black, inset 1px 0 2px white, 1px 0 2px black;
+  /* z-index: 1; */
 }
 /* bottom buttons ------------------------- */
 .bottom {
-  bottom: 80px;
+  top: 75%;
+  box-shadow: inset 0 -1px 2px black, inset 0 1px 2px white, 0 1px 3px black;
 }
 #rightCtrlr .bottom {
   left: 50px;
@@ -291,29 +283,36 @@ a {
   height: 80%;
   width: 80%;
   border-radius: 50%;
-  transform: translateX(50%) translateY(-50%) rotate(-45deg);
+  transform: translateX(50%) translateY(-50%);
   background-color: #4e4e4e;
-  border-right: 2px solid black;
-  border-left: 2px solid #797878;
+  border-top: 2px solid black;
+  border-bottom: 2px solid #797878;
 }
 /* bumpers ---------------------------- */
 .bumper {
-  height: 130px;
-  width: 250px;
-  top: -6px;
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  background-color: #38393D;
+  top: -8px;
   z-index: -1;
+  border: 1px solid black;
 }
 #leftCtrlr .bumper {
-  border-radius: 200px 8px 0px 8px;
-  left: 2%;
+  border-radius: 10em 1em 0 1em;
+  left: -1%;
 }
 #rightCtrlr .bumper {
-  border-radius: 8px 200px 8px 0px;
-  right: 2%;
+  border-radius: 1em 10em 1em 0;
+  right: -1%;
 }
 /* center boxes ----------------------- */
 #textbox {
+  display: flex;
   height: 15vh;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 #buttonbox {
   position: absolute;
@@ -352,14 +351,18 @@ h1 {
 h2 {
   text-align: center;
 }
-footer{
+footer {
   position: absolute;
   bottom: 6vh;
   right: 25vw;
 }
-footer a{
+footer a {
   text-decoration: none;
   color: aquamarine;
+}
+
+footer a:hover {
+  text-shadow: 0 0 3px aqua;
 }
 @media (max-width: 767px) {
   main {
@@ -391,7 +394,7 @@ footer a{
     transform: translateX(-50%) rotate(90deg);
   }
   #leftCtrlr .dpad {
-    top: 45%;
+    top: 40%;
   }
   #rightCtrlr .dpad {
     top: 15%;
