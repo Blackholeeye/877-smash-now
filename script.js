@@ -38,6 +38,7 @@ cursor.innerHTML = `<img src='img/cursor-img.png'>`;
 // add styling to cursor
 cursor.style.position = 'absolute';
 cursor.style.borderRadius = '50%';
+cursor.style.zIndex = '100';
 // add cursor element to body element
 body.appendChild(cursor);
 
@@ -95,10 +96,9 @@ window.addEventListener('mousemove', (e) => {
 
 // mouse down event
 window.addEventListener('mousedown', (e) => {
-  console.log('mouse down!');
+  console.log("mousedown", e.target.classList);
   switch(e.target.className) {
     case 'button up':
-      e.target.className += ' isPressed';
       infoBox.innerHTML = smashNews;
       break;
     case 'button right':
@@ -113,11 +113,15 @@ window.addEventListener('mousedown', (e) => {
     default:
       infoBox.innerHTML = welcomeMsg;
   }
+  if (e.target.classList.contains('button')) {
+    e.target.classList.add('isPressed');
+  }
 });
 
 // mouse up event
 window.addEventListener('mouseup', (e) => {
-  console.log('mouse up!');
-  e.target.className.replace(' isPressed', '');
-  console.log(e.target.className);
+  console.log("mouseup", e.target.classList);
+  if (e.target.classList.contains('button')) {
+    e.target.classList.remove('isPressed');
+  }
 });
