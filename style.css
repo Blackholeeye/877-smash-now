@@ -41,7 +41,8 @@ main {
   position: relative;
   overflow: scroll;
 }
-a {
+a,
+.button {
   cursor: pointer;
 }
 /* controller--------------------------------- */
@@ -70,20 +71,24 @@ a {
   width: 50px;
   background-color: #38393D;
 }
+.button:hover {
+  /* background: url("https://c.tenor.com/Pc1fdzwGVyMAAAAC/smash-bros-smash.gif"); */
+  background-position: center;
+  background-size: cover;
+  background-color: none;
+}
+.isPressed,
+.isPressed::before {
+  animation: press 0.2s forwards;
+}
 /* D Pad ---------------------------------- */
 .dpad {
   position: absolute;
-  /* border: 1px solid black; */
   height: 210px;
   width: 210px;
   left: 50%;
   transform: translateX(-50%);
 }
-/* .dpad img {
-  width: 90%;
-  height: 90%;
-  margin: 5%;
-} */
 #leftCtrlr .dpad {
   top: 41%;
 }
@@ -91,11 +96,9 @@ a {
   top: 13%;
 }
 .dpad .button {
-  position: absolute;
   border-radius: 50%;
   height: 70px;
   width: 70px;
-  border: 2px solid black;
   box-shadow: inset 0 -1px 4px black, inset 0 2px 3px white, 0 3px 5px black;
   transition: box-shadow 0.2s;
 }
@@ -106,12 +109,6 @@ a {
   100% {
     box-shadow: inset 0 3px 5px black;
   }
-}
-.isPressed {
-  animation: press 0.2s forwards;
-}
-.dpad .button:hover {
-  background-color: aqua;
 }
 #leftCtrlr .dpad .button::after {
   content: '';
@@ -152,26 +149,31 @@ a {
   left: 0;
   transform: translateY(-50%);
 }
-#rightCtrlr .up {
-  background-image: url("img/facebook.png");
+#rightCtrlr .dpad .button::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
   background-position: center;
   background-size: contain;
-}
-#rightCtrlr .right {
-  background-image: url("img/instagram.png");
-  background-position: center;
-  background-size: contain;
-}
-#rightCtrlr .down {
-  background-image: url("img/discord.png");
-  background-position: center;
-  background-size: contain;
-}
-#rightCtrlr .left {
-  background-image: url("img/email.png");
-  background-position: center;
-  background-size: 75%;
   background-repeat: no-repeat;
+}
+#rightCtrlr .up::after {
+  background-image: url("img/facebook.png");
+}
+#rightCtrlr .right::after {
+  background-image: url("img/instagram.png");
+}
+#rightCtrlr .down::after {
+  background-image: url("img/discord.png");
+}
+#rightCtrlr .dpad .left::after {
+  background-image: url("img/email.png");
+  height: 82%;
+  width: 82%;
+  top: 9%;
+  left: 9%;
 }
 /* Joystick ------------------------------- */
 .joystick {
@@ -231,6 +233,7 @@ a {
   width: 40px;
   border-radius: 2px;
   box-shadow: inset 0 -1px 2px black, inset 0 1px 2px white, 0 1px 3px black;
+  color: #38393D;
 }
 #leftCtrlr .top {
   right: 20px;
@@ -242,22 +245,21 @@ a {
 #rightCtrlr .top::after {
   content: '';
   position: absolute;
-  background-color: #38393D;
+  background-color: currentColor;
 }
 #rightCtrlr .top::before {
-  height: 13px;
-  width: 16px;
-  z-index: 1;
-  left: 12px;
-}
-#rightCtrlr .top::after {
   height: 15px;
   width: 40px;
   transform: rotate(90deg);
   border: 1px solid black;
   border-radius: 2px;
   box-shadow: inset -1px 0 2px black, inset 1px 0 2px white, 1px 0 2px black;
-  /* z-index: 1; */
+}
+#rightCtrlr .top::after {
+  height: 13px;
+  width: 16px;
+  z-index: 1;
+  left: 12px;
 }
 /* bottom buttons ------------------------- */
 .bottom {
@@ -307,23 +309,6 @@ a {
   right: -1%;
 }
 /* center boxes ----------------------- */
-#textbox {
-  display: flex;
-  height: 15vh;
-  padding: 0;
-  align-items: center;
-  justify-content: center;
-}
-#buttonbox {
-  position: absolute;
-  font-size: 2em;
-  padding: 20px;
-  display: none;
-}
-#infobox {
-  font-size: 2em;
-  height: 75vh;
-}
 article {
   background-color: rgba(81, 146, 146, 0.801);
   padding: 30px;
@@ -350,6 +335,25 @@ h1 {
 }
 h2 {
   text-align: center;
+}
+#textbox {
+  display: flex;
+  height: 15vh;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+#buttonbox {
+  position: absolute;
+  font-size: 2em;
+  font-weight: bolder;
+  padding: 20px;
+  display: none;
+  background-color: rgb(81, 146, 146);
+}
+#infobox {
+  font-size: 2em;
+  height: 75vh;
 }
 footer {
   position: absolute;

@@ -47,41 +47,39 @@ window.addEventListener('mousemove', (e) => {
   // set cursor position to mouse position
   cursor.style.top = e.pageY + 3 + 'px';
   cursor.style.left = e.pageX + 3 + 'px';
-  // turn string of classes in array
-  let classNameArray = e.target.className.split(' ');
   // if class of "button"
-  if (classNameArray.includes('button')) {
+  if (e.target.classList.contains('button')) {
     // display button title on hover
     buttonBox.innerText = e.target.title;
     buttonBox.style.display = 'block';
     switch(e.target.id) {
       case 'smashNews':
-        buttonBox.style.bottom = '40vh';
+        buttonBox.style.top = '38vh';
         break;
       case 'tournamentNews':
-        buttonBox.style.bottom = '30vh';
+        buttonBox.style.top = '48vh';
         break;
       case 'stats':
-        buttonBox.style.bottom = '20vh';
+        buttonBox.style.top = '60vh';
         break;
       case 'donate':
-        buttonBox.style.bottom = '30vh';
+        buttonBox.style.top = '48vh';
         break;
       case 'facebook':
         buttonBox.style.right = '0';
-        buttonBox.style.top = '15vh';
+        buttonBox.style.top = '10vh';
         break;
       case 'instagram':
         buttonBox.style.right = '0';
-        buttonBox.style.top = '25vh';
+        buttonBox.style.top = '20vh';
         break;
       case 'discord':
         buttonBox.style.right = '0';
-        buttonBox.style.top = '35vh';
+        buttonBox.style.top = '30vh';
         break;
       case 'email':
         buttonBox.style.right = '0';
-        buttonBox.style.top = '25vh';
+        buttonBox.style.top = '20vh';
         break;
       default:
         buttonBox.style.display = 'none';
@@ -96,18 +94,17 @@ window.addEventListener('mousemove', (e) => {
 
 // mouse down event
 window.addEventListener('mousedown', (e) => {
-  console.log("mousedown", e.target.classList);
-  switch(e.target.className) {
-    case 'button up':
+  switch(e.target.id) {
+    case 'smashNews':
       infoBox.innerHTML = smashNews;
       break;
-    case 'button right':
+    case 'tournamentNews':
       infoBox.innerHTML = tournamentNews;
       break;
-    case 'button down':
+    case 'stats':
       infoBox.innerHTML = stats;
       break;
-    case 'button left':
+    case 'donate':
       infoBox.innerHTML = donate;
       break;
     default:
@@ -120,7 +117,6 @@ window.addEventListener('mousedown', (e) => {
 
 // mouse up event
 window.addEventListener('mouseup', (e) => {
-  console.log("mouseup", e.target.classList);
   if (e.target.classList.contains('button')) {
     e.target.classList.remove('isPressed');
   }
