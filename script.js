@@ -8,6 +8,7 @@ const infoBox = document.getElementById('infobox');
 // button label box
 const buttonBox = document.getElementById('buttonbox');
 // joysticks
+const joysticks = document.getElementsByClassName('joystick');
 const joystickLeft = document.getElementById('joystickLeft');
 const joystickRight = document.getElementById('joystickRight');
 // create container element for cursor
@@ -94,12 +95,11 @@ window.addEventListener('mousemove', (e) => {
     buttonBox.style.display = 'none';
   }
   // joystick follow
-  
-  joystickLeft.style.left = (e.pageX * 100) / window.innerWidth + '%';
-  joystickLeft.style.top = (e.pageY * 100) / window.innerHeight + '%';
-
-  joystickRight.style.left = (e.pageX * 100) / window.innerWidth + '%';
-  joystickRight.style.top = (e.pageY * 100) / window.innerHeight + '%';
+  for(let i = 0; i < 2; i++) {
+    joysticks[i].style.left = (e.pageX * 100) / window.innerWidth + '%';
+    joysticks[i].style.top = (e.pageY * 100) / window.innerHeight + '%';
+    joysticks[i].style.filter = `drop-shadow(${((-e.pageX * 100) / window.innerWidth + 50) / 5}px ${((-e.pageY * 100) / window.innerHeight + 50) / 5}px 10px rgba(0,0,0,0.75))`;
+  }
 });
 
 // mouse down event
