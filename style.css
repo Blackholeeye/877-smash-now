@@ -185,7 +185,7 @@ a,
   border-radius: 50%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #38393D
+  background-color: #38393D;
 }
 .joystick {
   position: absolute;
