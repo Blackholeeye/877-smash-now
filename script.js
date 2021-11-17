@@ -5,8 +5,11 @@ const email = '877smashnowleague@gmail.com';
 const body = document.querySelector('body');
 // get info box element
 const infoBox = document.getElementById('infobox');
-// botton label box
+// button label box
 const buttonBox = document.getElementById('buttonbox');
+// joysticks
+const joystickLeft = document.getElementById('joystickLeft');
+const joystickRight = document.getElementById('joystickRight');
 // create container element for cursor
 const cursor = document.createElement('div');
 
@@ -90,6 +93,13 @@ window.addEventListener('mousemove', (e) => {
     buttonBox.style.bottom = 'unset';
     buttonBox.style.display = 'none';
   }
+  // joystick follow
+  
+  joystickLeft.style.left = (e.pageX * 100) / window.innerWidth + '%';
+  joystickLeft.style.top = (e.pageY * 100) / window.innerHeight + '%';
+
+  joystickRight.style.left = (e.pageX * 100) / window.innerWidth + '%';
+  joystickRight.style.top = (e.pageY * 100) / window.innerHeight + '%';
 });
 
 // mouse down event
