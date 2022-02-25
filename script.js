@@ -40,6 +40,7 @@ const donate = `
 // add image tag to cursor element
 cursor.innerHTML = `<img src='img/cursor-img.png'>`;
 // add styling to cursor
+cursor.id = 'cursor';
 cursor.style.position = 'absolute';
 cursor.style.borderRadius = '50%';
 cursor.style.zIndex = '100';
@@ -52,7 +53,7 @@ window.addEventListener('mousemove', (e) => {
   cursor.style.top = e.pageY + 3 + 'px';
   cursor.style.left = e.pageX + 3 + 'px';
   // if class of "button"
-  if (e.target.classList.contains('button')) {
+  if (e.target.classList.contains('button') && window.innerWidth > 950) {
     // display button title on hover
     buttonBox.innerText = e.target.title;
     buttonBox.style.display = 'block';
@@ -95,11 +96,14 @@ window.addEventListener('mousemove', (e) => {
     buttonBox.style.display = 'none';
   }
   // joystick follow
-  for(let i = 0; i < 2; i++) {
-    joysticks[i].style.left = (e.pageX * 100) / window.innerWidth + '%';
-    joysticks[i].style.top = (e.pageY * 100) / window.innerHeight + '%';
-    joysticks[i].style.filter = `drop-shadow(${((-e.pageX * 100) / window.innerWidth + 50) / 5}px ${((-e.pageY * 100) / window.innerHeight + 50) / 5}px 10px rgba(0,0,0,0.75))`;
+  if(window.innerWidth > 950) {
+    for(let i = 0; i < 2; i++) {
+      joysticks[i].style.left = (e.pageX * 100) / window.innerWidth + '%';
+      joysticks[i].style.top = (e.pageY * 100) / window.innerHeight + '%';
+      joysticks[i].style.filter = `drop-shadow(${((-e.pageX * 100) / window.innerWidth + 50) / 5}px ${((-e.pageY * 100) / window.innerHeight + 50) / 5}px 10px rgba(0,0,0,0.75))`;
+    }
   }
+  
 });
 
 // mouse down event
