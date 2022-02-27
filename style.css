@@ -365,6 +365,8 @@ h2 {
 }
 #copyright {
   padding: 0.5rem;
+  color: #44618c;
+  text-shadow: -2px -1px 0px #162030;
 }
 #copyright a {
   text-decoration: none;
@@ -376,9 +378,9 @@ h2 {
 @media (max-width: 767px) {
   main {
     position: absolute;
-    top: 25%;
+    top: 20%;
     width: 90%;
-    height: 50vh;
+    height: 60vh;
   }
   h1,
   h2 {
